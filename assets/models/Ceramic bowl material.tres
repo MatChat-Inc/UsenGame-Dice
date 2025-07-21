@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://jplwabjsks22"]
+
+[resource]
+resource_name = "Ceramic bowl material"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+metallic = 0.1
+metallic_specular = 1.0
+roughness = 0.25
+metadata/extras = {
+"mmd_material": {},
+"pmc_matprops": {}
+}

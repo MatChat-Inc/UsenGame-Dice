@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://7ufkceun35yu"]
+
+[ext_resource type="Script" uid="uid://q7hcr7uvnmyo" path="res://ui/DrinkCell.gd" id="1_f6uh7"]
+[ext_resource type="Theme" uid="uid://cqg1v1hghhe0x" path="res://settings/themes/order.tres" id="1_tfxhp"]
+[ext_resource type="Texture2D" uid="uid://pkincg8y0uis" path="res://assets/images/beer.jpg" id="2_f6uh7"]
+
+[node name="DrinkCell" type="BoxContainer"]
+script = ExtResource("1_f6uh7")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.8
+
+[node name="Button" type="Button" parent="AspectRatioContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_tfxhp")
+text = "生ビール"
+icon = ExtResource("2_f6uh7")
+text_overrun_behavior = 3
+autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true

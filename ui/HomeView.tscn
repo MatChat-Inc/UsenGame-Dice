@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqxv8y2n3m4k5"]
+
+[ext_resource type="Script" uid="uid://n562ba1knwaj" path="res://ui/HomeView.gd" id="1_pm4x7"]
+[ext_resource type="FontFile" uid="uid://cqgrtwnci16nf" path="res://assets/fonts/ChillRoundGothic_Bold.otf" id="2_bjoi7"]
+[ext_resource type="Texture2D" uid="uid://2jr8wg6gtt2q" path="res://assets/images/ちんちろチャレンジ.png" id="2_pm4x7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a6nr8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(0.2, 0.2, 0.2, 0.8)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="HomeView" type="Control" node_paths=PackedStringArray("title", "start_button", "rules_button", "language_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pm4x7")
+title = NodePath("Title")
+start_button = NodePath("MenuContainer/StartButton")
+rules_button = NodePath("MenuContainer/OptionButton")
+language_button = NodePath("MenuContainer/LanguageButton")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.446281, 0.582554, 0.847887, 1)
+
+[node name="PatternOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8, 0.4, 0.6, 0.3)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 585.0
+offset_top = 77.0
+offset_right = 1185.0
+offset_bottom = 677.0
+texture = ExtResource("2_pm4x7")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = -612.0
+offset_right = 855.0
+offset_bottom = -463.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_bjoi7")
+theme_override_font_sizes/font_size = 72
+text = "GAME_TITLE"
+vertical_alignment = 1
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 99.0
+offset_top = 45.0
+offset_right = 642.0
+offset_bottom = 345.0
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="MenuContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bjoi7")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a6nr8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1")
+text = "START_BUTTON"
+flat = true
+alignment = 0
+
+[node name="Spacer1" type="Control" parent="MenuContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="OptionButton" type="Button" parent="MenuContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bjoi7")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a6nr8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1")
+text = "RULES_BUTTON"
+flat = true
+alignment = 0
+
+[node name="Spacer2" type="Control" parent="MenuContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="LanguageButton" type="Button" parent="MenuContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bjoi7")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a6nr8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1")
+text = "LANGUAGE"
+flat = true
+alignment = 0
+
+[node name="Spacer3" type="Control" parent="MenuContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="MenuContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bjoi7")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a6nr8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1")
+text = "QUIT"
+flat = true
+alignment = 0

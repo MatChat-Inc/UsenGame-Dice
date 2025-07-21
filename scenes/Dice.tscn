@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqoilg5pv8fhy"]
+
+[ext_resource type="PackedScene" uid="uid://bw6n74so407vx" path="res://assets/models/dice.blend" id="1_7yeca"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="dice" parent="." instance=ExtResource("1_7yeca")]

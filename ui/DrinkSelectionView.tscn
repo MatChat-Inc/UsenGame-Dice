@@ -1,0 +1,273 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8yay203a4b5c"]
+
+[ext_resource type="Script" uid="uid://c24rq71woq4fy" path="res://ui/DrinkSelectionView.gd" id="1_1x9v3"]
+[ext_resource type="PackedScene" uid="uid://7ufkceun35yu" path="res://ui/DrinkCell.tscn" id="2_5vmpa"]
+[ext_resource type="Texture2D" uid="uid://pkincg8y0uis" path="res://assets/images/beer.jpg" id="2_beer"]
+[ext_resource type="Theme" uid="uid://cqg1v1hghhe0x" path="res://settings/themes/order.tres" id="2_p8858"]
+[ext_resource type="Texture2D" uid="uid://bpdg0n02l70vt" path="res://assets/images/lemon_sour.jpg" id="3_lemon"]
+[ext_resource type="Texture2D" uid="uid://c0nfkkiymd25g" path="res://assets/images/grapefruit_sour.jpg" id="4_grapefruit"]
+
+[sub_resource type="FontVariation" id="FontVariation_5vmpa"]
+variation_embolden = 0.5
+
+[node name="DrinkSelectionScene" type="Control" node_paths=PackedStringArray("grid_view", "grid_cell")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1x9v3")
+grid_view = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView")
+grid_cell = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView/DrinkCell")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.951513, 0.794898, 0.785311, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_5vmpa")
+theme_override_font_sizes/font_size = 36
+text = "注文ドリンク選択"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_p8858")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="DrinksGridView" type="GridContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="DrinkCell" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView" instance=ExtResource("2_5vmpa")]
+visible = false
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.8
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView/AspectRatioContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_p8858")
+text = "生ビール"
+icon = ExtResource("2_beer")
+text_overrun_behavior = 3
+autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.8
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView/AspectRatioContainer2"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_p8858")
+text = "レモンサワー
+"
+icon = ExtResource("3_lemon")
+text_overrun_behavior = 3
+autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.8
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView/AspectRatioContainer3"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_p8858")
+text = "グレープフルーツサワー"
+icon = ExtResource("4_grapefruit")
+text_overrun_behavior = 3
+autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AspectRatioContainer4" type="AspectRatioContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.8
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView/AspectRatioContainer4"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_p8858")
+text = "生ビール"
+icon = ExtResource("2_beer")
+text_overrun_behavior = 3
+autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AspectRatioContainer5" type="AspectRatioContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.8
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView/AspectRatioContainer5"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_p8858")
+text = "レモンサワー
+"
+icon = ExtResource("3_lemon")
+text_overrun_behavior = 3
+autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AspectRatioContainer6" type="AspectRatioContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.8
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView/AspectRatioContainer6"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_p8858")
+text = "グレープフルーツサワー"
+icon = ExtResource("4_grapefruit")
+text_overrun_behavior = 3
+autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AspectRatioContainer7" type="AspectRatioContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.8
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView/AspectRatioContainer7"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_p8858")
+text = "生ビール"
+icon = ExtResource("2_beer")
+text_overrun_behavior = 3
+autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AspectRatioContainer8" type="AspectRatioContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.8
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView/AspectRatioContainer8"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_p8858")
+text = "レモンサワー
+"
+icon = ExtResource("3_lemon")
+text_overrun_behavior = 3
+autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="AspectRatioContainer9" type="AspectRatioContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+ratio = 0.8
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/DrinksGridView/AspectRatioContainer9"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_p8858")
+text = "グレープフルーツサワー"
+icon = ExtResource("4_grapefruit")
+text_overrun_behavior = 3
+autowrap_mode = 3
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ConfirmButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "決定"
+
+[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "戻る"
+
+[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

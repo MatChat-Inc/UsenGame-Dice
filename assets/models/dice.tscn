@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://vcvddbx15ige"]
+
+[ext_resource type="PackedScene" uid="uid://bw6n74so407vx" path="res://assets/models/dice.blend" id="1_ju2fo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ju2fo"]
+friction = 0.02
+bounce = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m4jp2"]
+size = Vector3(0.02, 0.02, 0.02)
+
+[node name="dice" instance=ExtResource("1_ju2fo")]
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_ju2fo")
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("BoxShape3D_m4jp2")

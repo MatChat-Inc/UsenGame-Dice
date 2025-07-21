@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# About this project 
+
+This game is a dice rolling game for restaurant.
+
+## Development Environment
+
+- Engine: Godot 4
+- Version: 4.4 (With UID for scripts.)
+- Language: GDScript
+
+# Rules
+
+## Common Guidelines
+
+1. Use english or japanese for all code, comments, and documentation.
+2. Use godot online document if necessary.

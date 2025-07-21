@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c002twawlqnb8"]
+
+[ext_resource type="PackedScene" uid="uid://dqoilg5pv8fhy" path="res://scenes/Dice.tscn" id="1_5chth"]
+
+[node name="DiceScene" type="Node3D"]
+
+[node name="Dice1" parent="." instance=ExtResource("1_5chth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+
+[node name="Dice2" parent="." instance=ExtResource("1_5chth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.2, 0.2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 5, 0)

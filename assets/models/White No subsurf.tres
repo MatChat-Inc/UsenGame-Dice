@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://0u03ia371sut"]
+
+[resource]
+resource_name = "White No subsurf"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.15
+metadata/extras = {
+"mmd_material": {}
+}

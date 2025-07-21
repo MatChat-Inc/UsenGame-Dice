@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyxc3x4ldv2ye"]
+
+[ext_resource type="Script" uid="uid://dob826esmldfh" path="res://scripts/GameManager.gd" id="1_4x2v6"]
+[ext_resource type="PackedScene" uid="uid://bqxv8y2n3m4k5" path="res://ui/HomeView.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://c8yay203a4b5c" path="res://ui/DrinkSelectionView.tscn" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://n6055nd3lmy4" path="res://ui/DiceGameView.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://djccuyeyx2abt" path="res://ui/ResultView.tscn" id="5_5vw27"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_4x2v6")
+entry_scene = ExtResource("2_lquwl")
+drink_selection_scene = ExtResource("3_7mycd")
+dice_game_scene = ExtResource("4_lquwl")
+result_scene = ExtResource("5_5vw27")
+
+[node name="GameManager" type="Node" parent="."]

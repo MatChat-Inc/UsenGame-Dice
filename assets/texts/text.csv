@@ -1,0 +1,26 @@
+keys,ja,en,zh
+LANGUAGE,日本語,English,中文
+GAME_TITLE,ちんちろ\nチャレンジ,Dice\nChallenge,叮叮\n挑战
+RULES_BUTTON,ルール確認,View Rules,查看规则
+START_BUTTON,ゲームスタート,Start Game,开始游戏
+LANGUAGE_BUTTON,言語,Language,语言
+DRINK_SELECTION_TITLE,注文ドリンク選択,Select Drink,选择饮品
+BEER,生ビール,Draft Beer,生啤酒
+LEMON_SOUR,レモンサワー,Lemon Sour,柠檬沙瓦
+GRAPEFRUIT_SOUR,グレープフルーツサワー,Grapefruit Sour,葡萄柚沙瓦
+CONFIRM,決定,Confirm,确定
+BACK,戻る,Back,返回
+GAME_EXECUTION_TITLE,ゲーム実行,Game Execution,游戏执行
+ROLL_DICE,サイコロを振る,Roll Dice,掷骰子
+RESULT_TITLE,結果表示,Result Display,结果显示
+DICE_RESULT,サイコロ結果,Dice Result,骰子结果
+SERVICE_RESULT,サービス内容,Service Content,服务内容
+ORDER_CONFIRMATION,%sを注文しました,Ordered %s,已订购%s
+FREE_DRINK,無料ドリンク,Free Drink,免费饮品
+MEGA_SIZE,メガジョッキサイズ（通常価格）,Mega Size (Regular Price),大杯尺寸（原价）
+HALF_PRICE,半額ドリンク,Half Price Drink,半价饮品
+RETRY_BUTTON,もう一度挑戦,Retry,再挑战
+BACK_TO_MENU,メニューに戻る,Back to Menu,返回菜单
+RULES_TITLE,ゲームルール,Game Rules,游戏规则
+RULES_TEXT,サイコロ判定ルール,Dice Rules,骰子判定规则
+OK,OK,OK,OK
