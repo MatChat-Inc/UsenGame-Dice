@@ -42,7 +42,7 @@ jobs:
       matrix:
         platform:
           - name: Windows
-            system: "ubuntu-latest"
+            system: "macos-latest"
             extension: ".exe"
             csharp: ${{ needs.check.outputs.using_dotnet }}
           - name: macOS
@@ -50,15 +50,15 @@ jobs:
             extension: ".app"
             csharp: ${{ needs.check.outputs.using_dotnet }}
           - name: Linux
-            system: "ubuntu-latest"
+            system: "macos-latest"
             extension: ".x86_64"
             csharp: ${{ needs.check.outputs.using_dotnet }}
           - name: Web
-            system: "ubuntu-latest"
+            system: "macos-latest"
             extension: ".html"
             csharp: ${{ needs.check.outputs.using_dotnet }}
           - name: Android
-            system: "ubuntu-latest"
+            system: "macos-latest"
             extension: ".apk"
             csharp: ${{ needs.check.outputs.using_dotnet }}
           # - name: iOS
