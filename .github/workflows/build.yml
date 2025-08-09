@@ -151,7 +151,7 @@ jobs:
       - name: Export Project
         run: |
           mkdir -v -p build
-          godot --headless --verbose --export-release "${{ matrix.platform.name }}" ./build/${{ github.event.repository.name }}${{ matrix.platform.extension }}
+          godot --headless --verbose --export-debug "${{ matrix.platform.name }}" ./build/${{ github.event.repository.name }}${{ matrix.platform.extension }}
 
       # Compress the build files and upload them as an artifact
       - name: Compress build files
