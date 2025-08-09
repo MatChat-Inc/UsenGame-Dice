@@ -1,10 +1,10 @@
 name: Build
 
-on: 
+on:
   workflow_call:
 
 env:
-  GODOT_ANDROID_KEYSTORE_RELEASE_PATH: ${{ github.workspace }}/release.keystore 
+  GODOT_ANDROID_KEYSTORE_RELEASE_PATH: ${{ github.workspace }}/release.keystore
   GODOT_ANDROID_KEYSTORE_RELEASE_USER: Unknown
   GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD: 123456
 
@@ -21,7 +21,7 @@ jobs:
 
       - name: Check if project is using C#
         id: check_dotnet
-        run: | 
+        run: |
           if [ -f *.csproj ]; then
             echo "using_dotnet=true" >> $GITHUB_OUTPUT
             echo "C# project found, C# workflow will be executed in the next job."
@@ -29,7 +29,7 @@ jobs:
             echo "using_dotnet=false" >> $GITHUB_OUTPUT
             echo "Non-C# project, C# workflow will be skipped in the next job."
           fi
-          
+  
   build:
     name: Build
     needs: check
@@ -40,7 +40,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: 
+        platform:
           - name: Windows
             system: "ubuntu-latest"
             extension: ".exe"
@@ -66,14 +66,36 @@ jobs:
           #   extension: ".ipa"
         exclude:
           # Web platform does not support C# projects.
-          - platform: 
+          - platform:
               name: Web
               csharp: 'true'
     steps:
-        # Checkout
+      # Checkout
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install Blender
+        run: |
+          if [[ "$RUNNER_OS" == "Linux" ]]; then
+            sudo apt update
+            sudo apt install -y blender
+          elif [[ "$RUNNER_OS" == "macOS" ]]; then
+            brew install --cask blender
+          fi
+          blender --version
+
+      - name: Set Blender path
+        run: |
+          which blender
+          echo "BLENDER_PATH=$(which blender)" >> $GITHUB_ENV
+      
+      #      - name: Install xorg & xz-utils
+      #        if: matrix.platform.name != 'macOS'
+      #        run: |
+      #          sudo apt update
+      #          sudo apt install -y xorg
+      #          sudo apt install -y xz-utils
+      
       # Setup .NET
       - name: Setup .NET SDK
         if: needs.check.outputs.using_dotnet == 'true'
@@ -84,12 +106,12 @@ jobs:
       - name: Build C# Projects
         if: needs.check.outputs.using_dotnet == 'true'
         run: |
-            dotnet restore
-            dotnet build
+          dotnet restore
+          dotnet build
 
       # Setup Godot
       - name: Setup Godot
-        uses: chickensoft-games/setup-godot@v1
+        uses: chickensoft-games/setup-godot@v2
         with:
           # Version must include major, minor, and patch, and be >= 4.0.0
           # Pre-release label is optional.
@@ -121,11 +143,11 @@ jobs:
               -storepass $GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD -keypass $GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD -dname "CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, S=Unknown, C=Unknown"
           fi
           env
-
-      # Build the project for each platform
-      - name: Build Godot Solutions
-        run: godot --headless --build-solutions --quit || exit 0
         
+        # Build the project for each platform
+        # - name: Build Godot Solutions
+        #   run: godot --headless --build-solutions --quit || exit 0
+
       - name: Export Project
         run: |
           mkdir -v -p build
@@ -140,8 +162,22 @@ jobs:
       - name: Display structure of build files
         run: ls -R ./build
 
+      - name: Display structure of workspace
+        run: |
+          ls -aR | perl -ne 'if(/^(.+):$/){$d=$1;next}next if /^\s*$/||$_ eq ".\n"||$_ eq "..\n";chomp;$p=$d?"$d/$_":$_;$p=~s/[^-][^\/]*\//    /g;$p=~s/^    (\S)/└── \1/;$p=~s/(^    |    (?= ))/│   /g;$p=~s/    (\S)/└── \1/;print "$p\n"'
+          echo "└── [END]"
+
+      # Upload artifact
+      - name : Upload Artifact
+        uses: actions/upload-artifact@v4
+        if: matrix.platform.name != 'Android'
+        with:
+          name: Build-${{ matrix.platform.name }}
+          path: ./build/${{ matrix.platform.name }}.zip
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
+        if: matrix.platform.name == 'Android'
         with:
-          name: ${{ matrix.platform.name }}
-          path: ./build/${{ matrix.platform.name }}.zip
+          name: Build-${{ matrix.platform.name }}
+          path: ./build/${{ github.event.repository.name }}.apk
